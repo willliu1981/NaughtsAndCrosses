@@ -22,14 +22,9 @@ public class App {
 		checker.setMark(mx);
 		System.out.println(checker);
 
-		MarkO mo1 = new MarkO(1, 2);
-		MarkX mx3 = new MarkX(1, 4);
-		System.out.println(mx.equals(mx3));
-		
-		Set<Mark> sets=new HashSet<>();
-		sets.add(mx);
-		sets.add(mx3);
-		System.out.println(sets);
+		MarkO mo = new MarkO(1, 1);
+		checker.setMark(mo);
+		System.out.println(checker);
 
 	}
 }

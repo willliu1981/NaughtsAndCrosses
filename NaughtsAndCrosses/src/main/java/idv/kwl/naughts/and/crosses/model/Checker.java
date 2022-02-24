@@ -3,6 +3,8 @@ package idv.kwl.naughts.and.crosses.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import idv.kwl.naughts.and.crosses.exception.SetErrorException;
+
 public class Checker {
 	private static Checker instance;
 
@@ -26,7 +28,12 @@ public class Checker {
 	}
 
 	public void setMark(Mark mark) {
-		this.markMap.put(mark.getPoint(), mark);
+		if (this.markMap.get(mark.getPoint()) instanceof NA) {
+			this.markMap.put(mark.getPoint(), mark);
+		} else {
+			throw new SetErrorException(mark.getClass().getSimpleName() + " set to "
+					+ this.markMap.get(mark.getPoint()).getClass().getSimpleName());
+		}
 	}
 
 	@Override
