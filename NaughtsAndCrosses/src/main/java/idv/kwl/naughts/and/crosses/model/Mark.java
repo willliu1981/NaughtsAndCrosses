@@ -7,12 +7,15 @@ public abstract class Mark {
 		this.point = new Point(x, y);
 	}
 
+	public Point getPoint() {
+		return point;
+	}
+
 	@Override
 	public int hashCode() {
 		int prime = 31;
 		int res = 1;
-		res = prime * res + this.point.getX();
-		res = prime * res + this.point.getY();
+		res = prime * res + this.getClass().hashCode();
 
 		return res;
 	}
@@ -27,18 +30,22 @@ public abstract class Mark {
 			return false;
 		}
 
-//		if (this.getClass() != obj.getClass()) {
-//			return false;
-//		}
+		return this.getClass() == obj.getClass();
 
-		if (!(obj instanceof Mark)) {
-			return false;
+		/*
+		if (this.getClass() != obj.getClass()) {
+		return false;
 		}
-
+		
 		Mark other = (Mark) obj;
-
+		
 		return this.point.getX() == other.point.getX() && this.point.getY() == other.point.getY();
+		//*/
+	}
 
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + " [point=" + point + "]";
 	}
 
 }

@@ -30,4 +30,34 @@ public class Point {
 		return "Point [x=" + x + ", y=" + y + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		int prime = 31;
+		int res = 1;
+		res = prime * res + this.getX();
+		res = prime * res + this.getY();
+
+		return res;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (obj == null) {
+			return false;
+		}
+
+		if (!(obj instanceof Point)) {
+			return false;
+		}
+
+		Point other = (Point) obj;
+
+		return this.getX() == other.getX() && this.getY() == other.getY();
+
+	}
+
 }
