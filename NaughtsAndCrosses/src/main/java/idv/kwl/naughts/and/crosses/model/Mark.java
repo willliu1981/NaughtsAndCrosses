@@ -7,6 +7,10 @@ public abstract class Mark {
 		this.point = new Point(x, y);
 	}
 
+	public Mark(Point point) {
+		this.point = point;
+	}
+
 	public Point getPoint() {
 		return point;
 	}

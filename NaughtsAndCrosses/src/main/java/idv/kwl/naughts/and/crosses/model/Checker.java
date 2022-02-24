@@ -38,6 +38,10 @@ public class Checker {
 		return instance;
 	}
 
+	public Map<Point, Mark> getMarks() {
+		return markMap;
+	}
+
 	public void setMark(Mark mark) {
 		if (this.markMap.get(mark.getPoint()) instanceof NA) {
 			this.markMap.put(mark.getPoint(), mark);

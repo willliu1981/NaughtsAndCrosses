@@ -6,4 +6,12 @@ public class MarkX extends Mark {
 		super(x, y);
 	}
 
+	public MarkX(Point point) {
+		super(point);
+	}
+
+	@Override
+	public String toString() {
+		return "X";
+	}
 }

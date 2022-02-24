@@ -1,12 +1,13 @@
 package idv.kwl.naughts.and.crosses;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Scanner;
 
+import idv.kwl.naughts.and.crosses.draw.DrawWell;
+import idv.kwl.naughts.and.crosses.draw.Parse;
 import idv.kwl.naughts.and.crosses.model.Checker;
-import idv.kwl.naughts.and.crosses.model.Mark;
 import idv.kwl.naughts.and.crosses.model.MarkO;
 import idv.kwl.naughts.and.crosses.model.MarkX;
+import idv.kwl.naughts.and.crosses.model.Point;
 
 /**
  * Hello world!
@@ -14,19 +15,40 @@ import idv.kwl.naughts.and.crosses.model.MarkX;
  */
 public class App {
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
 
 		Checker checker = Checker.getInstance();
-		System.out.println(checker);
-		MarkX mx = new MarkX(0, 0);
-		MarkX mx2 = new MarkX(0, 1);
-		MarkX mx3 = new MarkX(0, 2);
-		checker.setMark(mx);
-		checker.setMark(mx2);
-		checker.setMark(mx3);
-		System.out.println(checker.check());
-		
-		System.out.println(mx.equals(MarkO.class));
+		Scanner sc = new Scanner(System.in);
+		System.out.print("place mark 'X' or 'O' in number 1 to 9,\n"
+				+ "1 is (1,1) and 9 is(3,3)...etc\n"
+				+ "\n\ngame start:\n");
 
+		DrawWell.drawWell(checker.getMarks());
+		while (true) {
+			//set Xs...
+			System.out.print("\nplace mark X: ");
+			int in = sc.nextInt();
+			Point p = Parse.parse(in);
+			checker.setMark(new MarkX(p));
+			boolean res = checker.check();
+			DrawWell.drawWell(checker.getMarks());
+
+			if (res) {
+				System.out.println("mark Xs win!");
+				System.exit(0);
+			}
+
+			//set Os...
+			System.out.print("\nplace mark O: ");
+			in = sc.nextInt();
+			p = Parse.parse(in);
+			checker.setMark(new MarkO(p));
+			res = checker.check();
+			DrawWell.drawWell(checker.getMarks());
+			
+			if (res) {
+				System.out.println("mark Os win!");
+				System.exit(0);
+			}
+		}
 	}
 }
