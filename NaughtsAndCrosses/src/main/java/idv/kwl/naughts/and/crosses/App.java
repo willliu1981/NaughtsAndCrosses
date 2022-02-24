@@ -19,12 +19,14 @@ public class App {
 		Checker checker = Checker.getInstance();
 		System.out.println(checker);
 		MarkX mx = new MarkX(1, 1);
+		MarkX mx2 = new MarkX(0, 0);
+		MarkX mx3 = new MarkX(2, 2);
 		checker.setMark(mx);
-		System.out.println(checker);
+		checker.setMark(mx2);
+		checker.setMark(mx3);
+		System.out.println(checker.check());
 
-		MarkO mo = new MarkO(1, 1);
-		checker.setMark(mo);
-		System.out.println(checker);
+
 
 	}
 }

@@ -1,16 +1,24 @@
 package idv.kwl.naughts.and.crosses.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import idv.kwl.naughts.and.crosses.condition.Condition;
+import idv.kwl.naughts.and.crosses.condition.ConditionA;
+import idv.kwl.naughts.and.crosses.exception.FindErrorException;
 import idv.kwl.naughts.and.crosses.exception.SetErrorException;
 
 public class Checker {
 	private static Checker instance;
 
 	private Map<Point, Mark> markMap;
+	private List<Condition> conds;
 
 	private Checker() {
+		conds = new ArrayList<>();
+		conds.add(new ConditionA());
 
 		markMap = new HashMap<>();
 		for (int x = 0; x <= 2; x++) {
@@ -34,6 +42,10 @@ public class Checker {
 			throw new SetErrorException(mark.getClass().getSimpleName() + " set to "
 					+ this.markMap.get(mark.getPoint()).getClass().getSimpleName());
 		}
+	}
+
+	public boolean check() {
+		return this.conds.stream().anyMatch(y -> y.check(markMap));
 	}
 
 	@Override
