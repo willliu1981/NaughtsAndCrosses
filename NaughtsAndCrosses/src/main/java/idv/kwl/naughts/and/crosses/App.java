@@ -18,15 +18,15 @@ public class App {
 
 		Checker checker = Checker.getInstance();
 		System.out.println(checker);
-		MarkX mx = new MarkX(1, 1);
-		MarkX mx2 = new MarkX(0, 0);
-		MarkX mx3 = new MarkX(2, 2);
+		MarkX mx = new MarkX(0, 0);
+		MarkX mx2 = new MarkX(0, 1);
+		MarkX mx3 = new MarkX(0, 2);
 		checker.setMark(mx);
 		checker.setMark(mx2);
 		checker.setMark(mx3);
 		System.out.println(checker.check());
-
-
+		
+		System.out.println(mx.equals(MarkO.class));
 
 	}
 }

@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import idv.kwl.naughts.and.crosses.condition.Condition;
-import idv.kwl.naughts.and.crosses.condition.ConditionA;
-import idv.kwl.naughts.and.crosses.exception.FindErrorException;
+import idv.kwl.naughts.and.crosses.condition.ConditionCent;
+import idv.kwl.naughts.and.crosses.condition.ConditionLT;
+import idv.kwl.naughts.and.crosses.condition.ConditionRB;
 import idv.kwl.naughts.and.crosses.exception.SetErrorException;
 
 public class Checker {
@@ -18,7 +19,9 @@ public class Checker {
 
 	private Checker() {
 		conds = new ArrayList<>();
-		conds.add(new ConditionA());
+		conds.add(new ConditionCent());
+		conds.add(new ConditionLT());
+		conds.add(new ConditionRB());
 
 		markMap = new HashMap<>();
 		for (int x = 0; x <= 2; x++) {

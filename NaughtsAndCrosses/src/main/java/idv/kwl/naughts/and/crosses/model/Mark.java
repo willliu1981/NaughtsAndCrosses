@@ -20,6 +20,11 @@ public abstract class Mark {
 		return res;
 	}
 
+	public boolean equals(Class clazz) {
+
+		return this.getClass() == clazz;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
